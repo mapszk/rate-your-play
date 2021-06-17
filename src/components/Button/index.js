@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-const index = ({mt, mr, mb, ml, handleClick, url, children, ...props}) => {
+const index = ({type, mt, mr, mb, ml, handleClick, url, children, ...props}) => {
     const primary = [
         `mt-${mt}`,
         `mr-${mr}`,
@@ -38,7 +37,7 @@ const index = ({mt, mr, mb, ml, handleClick, url, children, ...props}) => {
     ].join(' ')
 
     return(
-        <button onClick={handleClick} className={props.secondary ? secondary : props.primary ? primary : null}>
+        <button onClick={handleClick} type={type} className={props.secondary ? secondary : props.primary ? primary : null}>
             {children}
         </button>
     )

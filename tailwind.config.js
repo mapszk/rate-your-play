@@ -10,7 +10,7 @@ module.exports = {
         primary: "#ED6D5C",
         secondary: "#452044",
         dark: "#180C14",
-        mid: "#8967115",
+        mid: "#594373",
       }
     },
     minWidth: {

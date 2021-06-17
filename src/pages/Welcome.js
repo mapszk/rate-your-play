@@ -94,7 +94,7 @@ const Welcome = () => {
                 </section>
             </Container>
             <div className="inset-0 absolute z-n opacity-5 overflow-hidden flex justify-center items-center">
-                <img style={{objectFit: 'cover', height: '100%'}} src={mario} alt="" srcset="" />
+                <img style={{objectFit: 'cover', height: '100%'}} src={mario} alt="mario" />
             </div>
         </>
     );
