@@ -1,13 +1,16 @@
 import * as React from "react"
+import { useHistory } from "react-router"
 
 function SvgComponent({mt, mr, ml, mb, width, ...props}) {
+  const history = useHistory()
   const margin = `${mt || 0 } ${mr || 0 } ${mb || 0 } ${ml || 0 } `
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 479.57 454.11"
       width={width}
-      style={{margin}}
+      style={{margin, cursor: 'pointer'}}
+      onClick={()=> history.push('/')}
     >
       <defs>
         <style>{`.prefix__cls-1{fill:${

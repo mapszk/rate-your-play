@@ -4,16 +4,15 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import Welcome from './pages/Welcome'
-import Container from './components/Container'
+import Register from './pages/Register'
 
 const Index = () => {
   return(
     <Router>
       <Switch>
         <Route path="/welcome"><Welcome/></Route>
-        <Container>
-          <Route path="/" exact><App/></Route>
-        </Container>
+        <Route path="/register"><Register/></Route>
+        <Route path="/" exact><App/></Route>
       </Switch>
     </Router>
   )

@@ -11,19 +11,16 @@ module.exports = {
         secondary: "#452044",
         dark: "#180C14",
         mid: "#8967115",
-      },
-      backgroundImage: {
-        'hero-1': "url('./images/mario.png')"
       }
     },
     minWidth: {
       '0': '0',
-      '150' : '150px'
+      '150' : '150px',
+      '500' : '500px'
     },
   },
   variants: {
     extend: {
-      transform: ['active']
     },
   },
   plugins: [],
