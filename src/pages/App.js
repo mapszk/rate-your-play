@@ -1,10 +1,11 @@
-import { useAuthContext } from '../hooks/useAuthContext'
+import React from 'react';
 
-function App() {
-  const { user } = useAuthContext()
+import Avatar from '../components/Avatar'
+import Navbar from '../components/Navbar'
+
+const App = () => {
   return (
     <div className="App">
-      {user.toString()}
     </div>
   );
 }

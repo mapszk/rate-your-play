@@ -16,11 +16,22 @@ import Button from '../components/Button'
 import Container from '../components/Container'
 import Logo from '../components/Logo'
 import mario from '../images/mario.png'
+import { auth } from '../firebase/firebaseConfig';
 
 SwiperCore.use([Autoplay, Pagination, Navigation])
 
 const Welcome = () => {
     const history = useHistory()
+    const logout = async () => {
+        console.log('logout')
+        await auth.signOut()
+            .then(()=>{
+                history.push('/welcome')
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+    }
 
     const sectionStyles = [
         'h-screen',
@@ -51,6 +62,7 @@ const Welcome = () => {
             <Container>
                 <section className={sectionStyles}> 
                     <div className={infoStyles}>
+                        <Button handleClick={logout} primary>salir</Button>
                         <Logo white width="9rem" mb="2.5rem" />
                         <div className={buttonsDivStyles}>
                             <Button handleClick={()=>history.push('/register')} mb="2" primary>Get started</Button>

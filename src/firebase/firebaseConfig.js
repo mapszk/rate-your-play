@@ -19,3 +19,31 @@ export const loginWithGoogle = () => {
   const googleProvider = new firebase.auth.GoogleAuthProvider()
   return firebase.auth().signInWithPopup(googleProvider)
 }
+
+export const writeUserOnDatabase = async (user) => {
+  await db.collection('users')
+    .add({
+      photoURL: user.photoURL || null,
+      displayName: user.displayName,
+      uid: user.uid
+    })
+    .catch(err=>{
+      return err.message
+    })
+}
+export const updateUserOnDatabase = async (data, user) => {
+  
+}
+export const getUserDataFromDatabase = async (userUID) => {
+  await db.collection('users')
+    .where('uid', '==', userUID)
+    .get()
+    .then(querySnapshot=>{
+      querySnapshot.forEach(doc=>{
+        return doc.data()
+      })
+    })
+    .catch(err=>{
+      return err.message
+    })
+}

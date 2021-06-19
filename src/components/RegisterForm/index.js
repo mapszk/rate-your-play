@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { auth, loginWithGoogle } from '../../firebase/firebaseConfig';
+import { auth, db, loginWithGoogle, writeUserOnDatabase } from '../../firebase/firebaseConfig';
 import Button from '../../components/Button'
 import Input from '../../components/Input'
 import Label from '../../components/Label'
@@ -24,14 +24,20 @@ const Index = () => {
         setMsg('')
         setIsSubmitting(false)
     }, 6000)
+
     const handleSubmit = () => {
         setIsSubmitting(true)
         auth.createUserWithEmailAndPassword(email, password)
-            .then(userCredential=> {
-                const user = userCredential.user
+            .then(({user})=> {
+                const USER = {
+                    displayName: username,
+                    photoURL: null,
+                    uid: user.uid
+                }
                 user.updateProfile({
                     displayName: username.trim()
                 })
+                writeUserOnDatabase(USER)
                 setIsSubmitting(false)
             })
             .catch(err=> {
@@ -43,12 +49,27 @@ const Index = () => {
     }
     const loginGoogle = () => {
         loginWithGoogle()
-            .then(userCredential => {
-                const user = userCredential.user
-                const oldName = userCredential.user.displayName
-                user.updateProfile({
-                    displayName: oldName.replace(' ', '')
-                })
+            .then(async({user}) => {
+                /* 
+                check if the user is already registered on the database
+                */
+                await db.collection('users')
+                    .where('uid', '==', user.uid)
+                    .get()
+                    .then(querySnapshot=> {
+                            if(querySnapshot.empty){
+                            const USER = {
+                                displayName: user.displayName.replace(' ', ''),
+                                photoURL: user.photoURL,
+                                uid: user.uid
+                            }
+                            user.updateProfile({
+                                displayName: user.displayName.replace(' ', '')
+                            })
+                            writeUserOnDatabase(USER)
+                        }
+                    })
+                    .catch(err=> console.log(err))
                 setIsSubmitting(false)
             })
             .catch(error=> {
