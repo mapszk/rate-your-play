@@ -13,6 +13,7 @@ import Register from './pages/Register'
 import Game from './pages/Game';
 import Genre from './pages/Genre';
 import Profile from './pages/Profile';
+import SearchResult from './pages/SearchResult';
 
 const Index = () => {
   return(
@@ -34,6 +35,9 @@ const Index = () => {
           </PrivateRoute>
           <PrivateRoute path="/profile/:userUID">
             <Profile />
+          </PrivateRoute>
+          <PrivateRoute path="/search/:keyword">
+            <SearchResult />
           </PrivateRoute>
 
         </Switch>
