@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { db } from '../firebase/firebaseConfig'
+import { useParams } from 'react-router';
 
-const useGetGameInfo = ({gameslug}) => {
+const useGetGameInfo = () => {
+    const { gameslug } = useParams()
     const history = useHistory()
     const [loading, setLoading] = useState(true)
     const [gameInfo, setGameInfo] = useState({})
 
     useEffect(() => {
-        db.collection('games').where('slug', '==', gameslug.trim())
+        const getGameData = async () => {
+            await db.collection('games').where('slug', '==', gameslug.trim())
             .get()
             .then(querySnapshot=>{
                 querySnapshot.forEach(doc=>{
@@ -19,6 +22,8 @@ const useGetGameInfo = ({gameslug}) => {
             .catch(err=> {
                 history.push('/')
             })
+        }
+        getGameData()
     }, [gameslug])
 
     return {loading, gameInfo}

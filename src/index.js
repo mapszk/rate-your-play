@@ -11,6 +11,7 @@ import Welcome from './pages/Welcome'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Game from './pages/Game';
+import Genre from './pages/Genre';
 
 const Index = () => {
   return(
@@ -25,6 +26,9 @@ const Index = () => {
           </PrivateRoute>
           <PrivateRoute path="/" exact>
             <App/>
+          </PrivateRoute>
+          <PrivateRoute path="/category/:genre">
+            <Genre />
           </PrivateRoute>
         </Switch>
       </Router>

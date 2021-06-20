@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Avatar from '../Avatar'
-import SearchBar from '../SearchBar'
-import Container from '../Container'
+import Avatar from './Avatar'
+import SearchBar from './SearchBar'
+import Container from './Container'
 
 const index = () => {
     const headerStyles = [

@@ -1,9 +1,10 @@
-import { format, formatISO, fromUnixTime } from 'date-fns';
+import { format } from 'date-fns';
 import React, { useEffect, useState } from 'react';
-import { db, getUserDataFromDatabase } from '../../firebase/firebaseConfig';
+import { db } from '../firebase/firebaseConfig';
 
-import Avatar from '../Avatar'
+import Avatar from './Avatar'
 import ReactStars from 'react-rating-stars-component'
+import { useHistory } from 'react-router';
 
 const formatDate = (timestamp) => {
     const result = format(new Date(timestamp), 'Pp')
@@ -13,6 +14,10 @@ const formatDate = (timestamp) => {
 const Index = ({userUID, date, rating, review}) => {
     const [userData, setUserData] = useState(null)
     const [loading, setLoading] = useState(true)
+    const history = useHistory()
+    const handleProfile = () => {
+        history.push(`/profile/${userUID}`)
+    }
     useEffect(()=>{
         const getData = async () => {
             await db.collection('users')
@@ -30,9 +35,9 @@ const Index = ({userUID, date, rating, review}) => {
     }, [userUID])
     if(loading) return 'Loading...'
     return (
-        <article className="p-3 border-b-2 border-opacity-20 border-mid">
+        <article className="p-3 border-b-2 border-opacity-20 border-mid flex flex-col">
             <div className="flex text-white items-center">
-                <div className="w-10 mr-4">
+                <div className="w-10 mr-4 cursor-pointer" onClick={handleProfile}>
                     <Avatar url={userData.photoURL}/>
                 </div>
                 <div className="flex flex-col items-start">
@@ -43,14 +48,15 @@ const Index = ({userUID, date, rating, review}) => {
                             activeColor="#ED6D5C" 
                             value={rating}
                             size={20}
+                            edit={false}
                         />
                     </div>
                 </div>
-                <h2 className="text-sm font-semibold self-center text-mid ml-auto">{formatDate(date)}</h2>
             </div>
             <blockquote className="text-white italic text-md mt-2">
                 {review}
             </blockquote>
+            <h2 className="text-xs mt-2 font-semibold self-center text-mid mr-auto">{formatDate(date)}</h2>
         </article>
     );
 }

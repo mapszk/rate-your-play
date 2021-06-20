@@ -1,24 +1,22 @@
 import React from 'react';
 
-import { useParams } from 'react-router';
 import useGetGameInfo from '../hooks/useGetGameInfo'
 
 import Container from '../components/Container'
 import GameInfo from '../components/GameInfo'
 import Loader from '../components/Loader'
 import RatingPanel from '../components/RatingPanel'
-import Review from '../components/Review'
+import ReviewsSection from '../components/ReviewsSection'
 
 
 const Game = () => {
-    const { gameslug } = useParams()
-    const { loading, gameInfo } = useGetGameInfo({gameslug})
+    const { loading, gameInfo } = useGetGameInfo()
     const { cover, name, genres, price, releaseYear, dev, gameplay, site, reviews } = gameInfo
-    console.log(reviews)
+
     if(loading) return <Loader />
     return (
         <Container>
-            <section className="py-2">
+            <section className="">
                     <GameInfo 
                         cover={cover} 
                         name={name} 
@@ -30,19 +28,9 @@ const Game = () => {
                     <RatingPanel 
                         gameplay={gameplay}
                         site={site}
+                        classNames="mb-2"
                     /> 
-                    <h1 className="text-2xl text-white font-semibold">Reviews</h1>
-                    {
-                        reviews.map(({userUID, review, date, rating})=>{
-                            return <Review 
-                                key={userUID}
-                                userUID={userUID} 
-                                review={review} 
-                                date={date} 
-                                rating={rating} 
-                            />
-                        })
-                    }
+                    <ReviewsSection reviews={reviews}/>
             </section>
         </Container>
     );

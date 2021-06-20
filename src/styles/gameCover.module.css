@@ -1,0 +1,27 @@
+.cover{
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+.title{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    width: 100%;
+    color: #ED6D5C;
+    font-weight: 500;
+    padding: .5rem;
+    bottom: 0;
+    border-bottom-left-radius: .2rem;
+    border-bottom-right-radius: .2rem;
+}
+
+@media (hover){
+    .title{
+        transform: translateY(100%);
+        transition: transform .5s ease;
+    }
+    .cover:hover .title{
+        transform: translateY(0);
+    }
+}

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-import Button from '../../components/Button'
-import Input from '../../components/Input'
-import Label from '../../components/Label'
+import Button from './Button'
+import Input from './Input'
+import Label from './Label'
 import { FcGoogle } from 'react-icons/fc'
-import { db, getUserDataFromDB, loginWithGoogle, writeUserOnDatabase } from '../../firebase/firebaseConfig';
+import { db, getUserDataFromDB, loginWithGoogle, writeUserOnDatabase } from '../firebase/firebaseConfig';
 
 const Index = () => {
     const [email, setEmail] = useState('')

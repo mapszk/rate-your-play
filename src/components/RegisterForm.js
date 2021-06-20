@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import { auth, db, loginWithGoogle, writeUserOnDatabase } from '../../firebase/firebaseConfig';
-import Button from '../../components/Button'
-import Input from '../../components/Input'
-import Label from '../../components/Label'
+import { auth, db, loginWithGoogle, writeUserOnDatabase } from '../firebase/firebaseConfig';
+import Button from './Button'
+import Input from './Input'
+import Label from './Label'
 import { FcGoogle } from 'react-icons/fc'
 
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
