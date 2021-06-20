@@ -1,7 +1,28 @@
 import React from 'react';
 import Review from '../components/Review'
 
-const ReviewsSection = ({reviews}) => {
+const ReviewsSection = ({forProfile, reviews}) => {
+    if(forProfile) return(
+        <div>
+            <h1 className="text-2xl text-primary font-semibold">Reviews</h1>
+            {
+                reviews===undefined || reviews.length===0 ? 
+                <div className="text-mid font-semibold text-center w-full h-24 flex justify-center items-center p-4">
+                    This user hasn't made any review yet
+                </div> : 
+                reviews.map(({game_slug, review, date, rating})=>{
+                    return <Review 
+                        forProfile={true}
+                        key={date}
+                        game_slug={game_slug} 
+                        review={review} 
+                        date={date} 
+                        rating={rating} 
+                    />
+                })
+            }
+        </div>
+    )
     return (
         <div>
             <h1 className="text-2xl text-primary font-semibold">Reviews</h1>

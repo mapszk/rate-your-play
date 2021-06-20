@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import useGetGenreGames from '../hooks/useGetGenreGames'
+import useGetGenreGames from '../hooks/useGenrePage'
 import Loader from '../components/Loader'
 import Container from '../components/Container'
 import GameCover from '../components/GameCover'

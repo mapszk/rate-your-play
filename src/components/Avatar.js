@@ -5,7 +5,7 @@ import sampleUser from '../images/sampleUser.png'
 
 const Index = ({url}) => {
     const { user } = useAuthContext()
-    if(url){
+    if(url !== undefined){
         return(
             <img 
                 src={url || sampleUser} 

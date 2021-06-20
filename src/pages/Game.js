@@ -1,6 +1,6 @@
 import React from 'react';
 
-import useGetGameInfo from '../hooks/useGetGameInfo'
+import useGamePage from '../hooks/useGamePage'
 
 import Container from '../components/Container'
 import GameInfo from '../components/GameInfo'
@@ -10,7 +10,7 @@ import ReviewsSection from '../components/ReviewsSection'
 
 
 const Game = () => {
-    const { loading, gameInfo } = useGetGameInfo()
+    const { loading, gameInfo } = useGamePage()
     const { cover, name, genres, price, releaseYear, dev, gameplay, site, reviews } = gameInfo
 
     if(loading) return <Loader />

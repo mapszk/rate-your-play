@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import { db } from '../firebase/firebaseConfig'
 import { useParams } from 'react-router';
 
-const useGetGameInfo = () => {
+const useGamePage = () => {
     const { gameslug } = useParams()
     const history = useHistory()
     const [loading, setLoading] = useState(true)
@@ -29,4 +29,4 @@ const useGetGameInfo = () => {
     return {loading, gameInfo}
 }
 
-export default useGetGameInfo
+export default useGamePage

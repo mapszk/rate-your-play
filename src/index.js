@@ -12,6 +12,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Game from './pages/Game';
 import Genre from './pages/Genre';
+import Profile from './pages/Profile';
 
 const Index = () => {
   return(
@@ -21,15 +22,20 @@ const Index = () => {
           <Route path="/welcome"><Welcome/></Route>
           <Route path="/register"><Register/></Route>
           <Route path="/login"><Login/></Route>
-          <PrivateRoute path="/game/:gameslug">
-            <Game/>
-          </PrivateRoute>
+
           <PrivateRoute path="/" exact>
             <App/>
+          </PrivateRoute>
+          <PrivateRoute path="/game/:gameslug">
+            <Game/>
           </PrivateRoute>
           <PrivateRoute path="/category/:genre">
             <Genre />
           </PrivateRoute>
+          <PrivateRoute path="/profile/:userUID">
+            <Profile />
+          </PrivateRoute>
+
         </Switch>
       </Router>
     </AuthContextProvider>
