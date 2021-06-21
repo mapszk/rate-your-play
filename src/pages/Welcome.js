@@ -23,13 +23,9 @@ SwiperCore.use([Autoplay, Pagination, Navigation])
 const Welcome = () => {
     const history = useHistory()
     const logout = async () => {
-        console.log('logout')
         await auth.signOut()
             .then(()=>{
                 history.push('/welcome')
-            })
-            .catch((err)=>{
-                console.log(err)
             })
     }
 
@@ -62,11 +58,10 @@ const Welcome = () => {
             <Container>
                 <section className={sectionStyles}> 
                     <div className={infoStyles}>
-                        <Button handleClick={logout} primary>salir</Button>
-                        <Logo white width="9rem" mb="2.5rem" />
+                        <Logo fill="white" width="9" classNames="mb-4" />
                         <div className={buttonsDivStyles}>
-                            <Button handleClick={()=>history.push('/register')} mb="2" primary>Get started</Button>
-                            <Button handleClick={()=>history.push('/login')} secondary>Log in</Button>
+                            <Button handleClick={()=>history.push('/register')} full mb="2" primary>Get started</Button>
+                            <Button handleClick={()=>history.push('/login')} full secondary>Log in</Button>
                         </div>
                     </div>
                     <div>

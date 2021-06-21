@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from './Button'
 import ReactStars from 'react-rating-stars-component'
 
-const index = ({site, gameplay, classNames}) => {
+const RatingPanel = ({site, gameplay, classNames}) => {
+    console.log(site)
     return (
         <div className={`text-center bg-mid py-2 px-2 rounded ${classNames}`}>
             <h3 className="text-white font-semibold">Average rating</h3>
@@ -28,4 +29,4 @@ const index = ({site, gameplay, classNames}) => {
     )
 }
 
-export default index;
+export default RatingPanel;

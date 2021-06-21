@@ -6,6 +6,7 @@ import './index.css';
 
 import AuthContextProvider from './contexts/AuthContext';
 import PrivateRoute from './components/PrivateRoute'
+import Container from './components/Container';
 import App from './pages/App';
 import Welcome from './pages/Welcome'
 import Login from './pages/Login'
@@ -14,6 +15,7 @@ import Game from './pages/Game';
 import Genre from './pages/Genre';
 import Profile from './pages/Profile';
 import SearchResult from './pages/SearchResult';
+import ProfileSettings from './pages/ProfileSettings';
 
 const Index = () => {
   return(
@@ -23,22 +25,26 @@ const Index = () => {
           <Route path="/welcome"><Welcome/></Route>
           <Route path="/register"><Register/></Route>
           <Route path="/login"><Login/></Route>
-
-          <PrivateRoute path="/" exact>
-            <App/>
-          </PrivateRoute>
-          <PrivateRoute path="/game/:gameslug">
-            <Game/>
-          </PrivateRoute>
-          <PrivateRoute path="/category/:genre">
-            <Genre />
-          </PrivateRoute>
-          <PrivateRoute path="/profile/:userUID">
-            <Profile />
-          </PrivateRoute>
-          <PrivateRoute path="/search/:keyword">
-            <SearchResult />
-          </PrivateRoute>
+          <Container>
+            <PrivateRoute path="/" exact>
+              <App/>
+            </PrivateRoute>
+            <PrivateRoute path="/game/:gameslug">
+              <Game/>
+            </PrivateRoute>
+            <PrivateRoute path="/category/:genre">
+              <Genre />
+            </PrivateRoute>
+            <PrivateRoute path="/profile/:userUID">
+              <Profile />
+            </PrivateRoute>
+            <PrivateRoute path="/search/:keyword">
+              <SearchResult />
+            </PrivateRoute>
+            <PrivateRoute path="/settings">
+              <ProfileSettings />
+            </PrivateRoute>
+          </Container>
 
         </Switch>
       </Router>

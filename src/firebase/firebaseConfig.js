@@ -22,7 +22,8 @@ export const loginWithGoogle = () => {
 
 export const writeUserOnDatabase = async (user) => {
   await db.collection('users')
-    .add({
+    .doc(user.uid)
+    .set({
       photoURL: user.photoURL || null,
       displayName: user.displayName,
       uid: user.uid
@@ -30,9 +31,6 @@ export const writeUserOnDatabase = async (user) => {
     .catch(err=>{
       return err.message
     })
-}
-export const updateUserOnDatabase = async (data, user) => {
-  
 }
 export const getUserDataFromDatabase = async (userUID) => {
   await db.collection('users')

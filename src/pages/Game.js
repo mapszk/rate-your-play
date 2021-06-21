@@ -15,24 +15,22 @@ const Game = () => {
 
     if(loading) return <Loader />
     return (
-        <Container>
-            <section className="">
-                    <GameInfo 
-                        cover={cover} 
-                        name={name} 
-                        dev={dev} 
-                        genres={genres} 
-                        price={price} 
-                        releaseYear={releaseYear}
-                    />
-                    <RatingPanel 
-                        gameplay={gameplay}
-                        site={site}
-                        classNames="mb-2"
-                    /> 
-                    <ReviewsSection reviews={reviews}/>
-            </section>
-        </Container>
+        <section className="">
+                <GameInfo 
+                    cover={cover} 
+                    name={name} 
+                    dev={dev} 
+                    genres={genres} 
+                    price={price} 
+                    releaseYear={releaseYear}
+                />
+                <RatingPanel 
+                    gameplay={gameplay}
+                    site={site}
+                    classNames="mb-2"
+                /> 
+                <ReviewsSection reviews={reviews}/>
+        </section>
     );
 }
 

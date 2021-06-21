@@ -3,13 +3,13 @@ import { useAuthContext } from '../hooks/useAuthContext';
 
 import sampleUser from '../images/sampleUser.png'
 
-const Index = ({url}) => {
+const Index = ({url, classNames}) => {
     const { user } = useAuthContext()
     if(url !== undefined){
         return(
             <img 
                 src={url || sampleUser} 
-                className="ring-2 ring-primary rounded-full w-full" 
+                className={`ring-2 ring-primary rounded-full w-full ${classNames}`}
                 alt="profile"
             />
         )
@@ -17,7 +17,7 @@ const Index = ({url}) => {
         return (
             <img 
                 src={user.photoURL || sampleUser} 
-                className="ring-2 ring-primary rounded-full w-full" 
+                className={`ring-2 ring-primary rounded-full w-full ${classNames}`}
                 alt="profile"
             />
         )

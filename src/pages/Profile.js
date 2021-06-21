@@ -14,16 +14,16 @@ const Profile = () => {
     if(loading) return <Loader />
     if(error) return <Error />
     return (
-        <Container>
+        <>
             <div>
-                <div className="w-24 mx-auto">
+                <div className="w-24 mx-auto pt-4">
                     <Avatar url={photoURL}/>
                 </div>
                 <h1 className="text-primary text-2xl font-semibold text-center mt-2">{displayName}</h1>
                 <p className="text-mid text-center text-md px-2 mt-1 border-b-2 border-mid  border-opacity-20 pb-3">{desc}</p>
             </div>
             <ReviewsSection reviews={reviews} forProfile={true}/>
-        </Container>
+        </>
     );
 }
 

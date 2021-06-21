@@ -3,20 +3,28 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      zIndex: {
-        'n': '-1'
-      },
-      colors: {
-        primary: "#ED6D5C",
-        secondary: "#452044",
-        dark: "#180C14",
-        mid: "#594373",
-      }
-    },
-    minWidth: {
-      '0': '0',
-      '150' : '150px',
-      '500' : '500px'
+        zIndex: {
+            'n': '-1'
+        },
+        colors: {
+            primary: "#ED6D5C",
+            secondary: "#452044",
+            dark: "#180C14",
+            mid: "#594373",
+        },
+        maxWidth: {
+            'inherit': 'inherit',
+            '960': '960px'
+        },
+        minHeight: {
+            'custom': 'calc(100vh - 150px)'
+        },
+        minWidth: {
+            '0': '0',
+            '150': '150px',
+            '500': '500px',
+            'min': 'min-content'
+        }
     },
   },
   variants: {

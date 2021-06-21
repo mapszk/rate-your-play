@@ -23,7 +23,7 @@ const SearchResult = () => {
         </div>
     )
     return (
-        <Container>
+        <>
             <h1 className="text-primary text-2xl font-semibold mb-3">
                 Results for:
                 <span className="text-white">
@@ -37,7 +37,7 @@ const SearchResult = () => {
                     })
                 }
             </div>
-        </Container>
+        </>
     );
 }
 

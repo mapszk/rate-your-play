@@ -25,7 +25,7 @@ const Login = () => {
         <>
             <Container>
                 <section className={sectionStyles}>
-                    <Logo white width="3rem" mb="2rem" />
+                    <Logo fill="white" width="3" classNames="mb-4" />
                     <h1 className="text-white text-center font-semibold text-2xl mb-3">Log in</h1>
                     <LoginForm />
                     <Link to="/register" className="text-primary underline">I don't have an account</Link>

@@ -25,7 +25,7 @@ const Register = () => {
         <>
             <Container>
                 <section className={sectionStyles}>
-                    <Logo white width="3rem" mb="2rem" />
+                    <Logo fill="white" width="3" classNames="mb-4" />
                     <RegisterForm />
                     <Link to="/login" className="text-primary underline">I have an account</Link>
                 </section>
