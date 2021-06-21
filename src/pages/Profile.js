@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
-
+import React from 'react';
 import useProfilePage from '../hooks/useProfilePage'
-import Container from '../components/Container'
 import ReviewsSection from '../components/ReviewsSection'
 import Error from '../components/Error'
 import Loader from '../components/Loader'
@@ -10,7 +8,7 @@ import Avatar from '../components/Avatar'
 const Profile = () => {
     const {error, profileData, loading} = useProfilePage()
     const { desc, photoURL, displayName, reviews} = profileData
-    useEffect(()=>console.log(profileData), [profileData])
+    
     if(loading) return <Loader />
     if(error) return <Error />
     return (

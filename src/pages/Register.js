@@ -1,30 +1,19 @@
 import React from 'react';
-
-import { Link, Redirect } from 'react-router-dom';
-
+import { Link, Redirect } from 'react-router-dom'
 import Logo from '../components/Logo'
 import Container from '../components/Container'
 import RegisterForm from '../components/RegisterForm'
 import halo from '../images/halo.png'
-import { useAuthContext } from '../hooks/useAuthContext';
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const Register = () => {
     const { user } = useAuthContext()
-    const sectionStyles = [
-        'min-h-screen',
-        'w-full',
-        'flex',
-        'flex-col',
-        'justify-center',
-        'items-center',
-        'py-10',
-    ].join(' ')
 
     if(user) return <Redirect to="/welcome" />
     else return(
         <>
             <Container>
-                <section className={sectionStyles}>
+                <section className="min-h-screen w-full flex flex-col justify-center items-center py-10">
                     <Logo fill="white" width="3" classNames="mb-4" />
                     <RegisterForm />
                     <Link to="/login" className="text-primary underline">I have an account</Link>

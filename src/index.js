@@ -7,7 +7,7 @@ import './index.css';
 import AuthContextProvider from './contexts/AuthContext';
 import PrivateRoute from './components/PrivateRoute'
 import Container from './components/Container';
-import App from './pages/App';
+import Home from './pages/Home';
 import Welcome from './pages/Welcome'
 import Login from './pages/Login'
 import Register from './pages/Register'
@@ -27,7 +27,7 @@ const Index = () => {
           <Route path="/login"><Login/></Route>
           <Container>
             <PrivateRoute path="/" exact>
-              <App/>
+              <Home/>
             </PrivateRoute>
             <PrivateRoute path="/game/:gameslug">
               <Game/>

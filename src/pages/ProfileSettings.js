@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
-
-import Container from '../components/Container'
+import React, { useState } from 'react'
 import Avatar from '../components/Avatar'
-import { useAuthContext } from '../hooks/useAuthContext';
+import { useAuthContext } from '../hooks/useAuthContext'
 import Button from '../components/Button'
 import Input from '../components/Input'
 import Label from '../components/Label'
-import { db } from '../firebase/firebaseConfig';
-import { useHistory } from 'react-router';
+import { db } from '../firebase/firebaseConfig'
+import { useHistory } from 'react-router'
 
 const userRegex = /^(?=.{5,40}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9_]+(?<![_.])$/
 
@@ -46,26 +44,7 @@ const ProfileSettings = () => {
             return history.push(`/profile/${user.uid}`)
         }
     }
-
-    const formStyles = [
-        'w-full',
-        'flex',
-        'flex-col',
-        'justify-center',
-        'items-center',
-        'max-w-md',
-        'mt-5',
-        'mx-auto'
-    ].join(' ')
-    const errorStyles = [
-        'bg-mid',
-        'text-white',
-        'text-center',
-        'rounded',
-        'px-3',
-        'py-3',
-        'w-full'
-    ].join(' ')
+    
     return (
         <>
             <div className="pt-20">
@@ -74,13 +53,13 @@ const ProfileSettings = () => {
                 </div>
                 <h1 className="text-primary text-2xl font-semibold text-center mt-4">{displayName}</h1>
                 <h1 className="text-mid text-sm font-semibold text-center mt-1">{email}</h1>
-                <form className={formStyles} onSubmit={handleSubmit}>
+                <form className="w-full flex flex-col justify-center items-center max-w-md mt-5 mx-auto" onSubmit={handleSubmit}>
                     <Label>Change username</Label>
                     <Input 
                         value={newUsername} 
                         onChange={e=>setNewUsername(e.target.value)}   
                     />
-                    {error && <span className={errorStyles}>{msg}</span>}
+                    {error && <span className="bg-mid text-white text-center rounded px-3 py-3 w-full">{msg}</span>}
                     <div className="flex flex-col justify-between w-full mt-2">
                         <Button secondary full disabled={isSubmitting?true:false}>Cancel</Button>
                         <Button primary full mt={2} disabled={isSubmitting?true:false}>{isSubmitting? 'Loading...' : 'Save changes'}</Button>

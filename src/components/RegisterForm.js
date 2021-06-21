@@ -69,7 +69,6 @@ const Index = () => {
                             writeUserOnDatabase(USER)
                         }
                     })
-                    .catch(err=> console.log(err))
                 setIsSubmitting(false)
             })
             .catch(error=> {

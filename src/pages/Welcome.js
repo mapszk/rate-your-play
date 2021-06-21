@@ -1,65 +1,30 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Autoplay, Pagination, Navigation } from 'swiper/core'
 import "swiper/swiper.min.css";
 import "swiper/components/pagination/pagination.min.css"
 import "swiper/components/navigation/navigation.min.css"
-
 import { GiStarsStack } from 'react-icons/gi'
 import { MdRateReview } from 'react-icons/md'
 import { AiFillSchedule } from 'react-icons/ai'
 import { IconContext } from 'react-icons'
-
 import Button from '../components/Button'
 import Container from '../components/Container'
 import Logo from '../components/Logo'
 import mario from '../images/mario.png'
-import { auth } from '../firebase/firebaseConfig';
 
 SwiperCore.use([Autoplay, Pagination, Navigation])
 
 const Welcome = () => {
     const history = useHistory()
-    const logout = async () => {
-        await auth.signOut()
-            .then(()=>{
-                history.push('/welcome')
-            })
-    }
-
-    const sectionStyles = [
-        'h-screen',
-        'py-10',
-        'flex',
-        'flex-col',
-        'justify-center',
-        'relative',
-        'overflow-hidden'
-    ].join(' ')
-    const infoStyles = [
-        'grid-row-start-1',
-        'grid-row-end-1',
-        'flex',
-        'flex-col',
-        'justify-center',
-        'items-center',
-        'text-center',
-        'mb-12',
-    ].join(' ')
-    const buttonsDivStyles = [
-        'flex',
-        'flex-col'
-    ].join(' ')
-    
     return (
         <>
             <Container>
-                <section className={sectionStyles}> 
-                    <div className={infoStyles}>
+                <section className="h-screen py-10 flex flex-col justify-center relative overflow-hidden"> 
+                    <div className="grid-row-start-1 grid-row-end-1 flex flex-col justify-center items-center text-center mb-12">
                         <Logo fill="white" width="9" classNames="mb-4" />
-                        <div className={buttonsDivStyles}>
+                        <div className="flex flex-col">
                             <Button handleClick={()=>history.push('/register')} full mb="2" primary>Get started</Button>
                             <Button handleClick={()=>history.push('/login')} full secondary>Log in</Button>
                         </div>

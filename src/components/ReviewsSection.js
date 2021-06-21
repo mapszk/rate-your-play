@@ -1,10 +1,10 @@
 import React from 'react';
 import Review from '../components/Review'
 
-const ReviewsSection = ({forProfile, reviews}) => {
+const ReviewsSection = ({forProfile, reviews, classNames}) => {
     if(forProfile) return(
-        <div>
-            <h1 className="text-2xl text-primary font-semibold">Reviews</h1>
+        <div className={classNames}>
+            <h1 className="text-2xl text-white font-semibold">Reviews</h1>
             {
                 reviews===undefined || reviews.length===0 ? 
                 <div className="text-mid font-semibold text-center w-full h-24 flex justify-center items-center p-4">
@@ -24,8 +24,8 @@ const ReviewsSection = ({forProfile, reviews}) => {
         </div>
     )
     return (
-        <div>
-            <h1 className="text-2xl text-primary font-semibold">Reviews</h1>
+        <div className={classNames}>
+            <h1 className="text-2xl text-white font-semibold">Reviews</h1>
             {
                 reviews ? 
                 reviews.map(({userUID, review, date, rating})=>{

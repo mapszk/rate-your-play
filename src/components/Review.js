@@ -32,7 +32,6 @@ const Review = ({forProfile, game_slug, userUID, date, rating, review}) => {
                             setLoading(false)
                         })
                     })
-                    .catch(err=> console.log(err))
             }
         }
         getData()

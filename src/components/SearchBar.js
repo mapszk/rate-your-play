@@ -6,8 +6,13 @@ const SearchBar = ({classNames}) => {
     const history = useHistory()
     const [query, setQuery] = useState('')
     const search = () => {
-        history.push(`/search/${query.toLowerCase().trim()}`)
-        setQuery('')
+        if(query !== ''){
+            history.push(`/search/${query.toLowerCase().trim()}`)
+            setQuery('')
+        } 
+    }
+    const handleInput = e => {
+        if(e.key === 'Enter') return search()
     }
 
     const searchStyles = [
@@ -26,6 +31,7 @@ const SearchBar = ({classNames}) => {
                 type="text"
                 placeholder="Search"
                 value={query}
+                onKeyPress={handleInput}
                 onChange={e=>setQuery(e.target.value)}
             />
             <button onClick={search} className="absolute right-3 top-2 text-secondary">

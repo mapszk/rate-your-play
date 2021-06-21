@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { Link, Redirect } from 'react-router-dom';
-
 import Logo from '../components/Logo'
 import Container from '../components/Container'
 import LoginForm from '../components/LoginForm'
@@ -10,21 +8,12 @@ import { useAuthContext } from '../hooks/useAuthContext';
 
 const Login = () => {
     const { user } = useAuthContext()
-    const sectionStyles = [
-        'min-h-screen',
-        'w-full',
-        'flex',
-        'flex-col',
-        'justify-center',
-        'items-center',
-        'py-10',
-    ].join(' ')
 
     if(user) return <Redirect to="/welcome" />
     else return (
         <>
             <Container>
-                <section className={sectionStyles}>
+                <section className="min-h-screen w-full flex flex-col justify-center items-center py-10">
                     <Logo fill="white" width="3" classNames="mb-4" />
                     <h1 className="text-white text-center font-semibold text-2xl mb-3">Log in</h1>
                     <LoginForm />

@@ -1,18 +1,14 @@
-import React, { useEffect } from 'react';
-
-import Container from '../components/Container'
+import React from 'react'
 import Loader from '../components/Loader'
 import GameCover from '../components/GameCover'
-import useSearchResultPage from '../hooks/useSearchResultPage';
+import useSearchResultPage from '../hooks/useSearchResultPage'
 import { FaRegSadTear } from 'react-icons/fa'
-import { IconContext } from 'react-icons/lib';
-
+import { IconContext } from 'react-icons/lib'
 import styles from '../styles/genre.module.css'
 
 const SearchResult = () => {
     const { gamesInfo, loading, keyword } = useSearchResultPage()
-    useEffect(()=>console.log(gamesInfo), [gamesInfo])
-
+    
     if(loading) return <Loader />
     if(gamesInfo===0) return(
         <div className="w-full h-screen flex flex-col justify-center items-center text-mid font-semibold px-10 text-center">
