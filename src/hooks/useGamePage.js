@@ -24,7 +24,7 @@ const useGamePage = () => {
             })
         }
         getGameData()
-    }, [gameslug])
+    }, [gameslug, history])
 
     return {loading, gameInfo}
 }

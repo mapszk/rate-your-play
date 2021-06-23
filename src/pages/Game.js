@@ -17,7 +17,7 @@ const Game = () => {
                 <title>{name} - Rate Your Play</title>
             </Helmet>
             <section className={styles.section}>
-                    <img className="rounded object-cover h-52 w-full mb-2" src={cover}/>
+                    <img className="rounded object-cover h-52 w-full mb-2" alt={name} src={cover}/>
                     <div className={styles.grid}>
                         <GameInfo 
                             classNames={styles.info}
@@ -32,6 +32,7 @@ const Game = () => {
                             name={name}
                             gameplay={gameplay}
                             site={site}
+                            reviews={reviews}
                             classNames={styles.rating}
                         /> 
                         <ReviewsSection classNames={styles.reviews} reviews={reviews.filter(rev=>rev.review.length>0)}/>

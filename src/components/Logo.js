@@ -15,6 +15,8 @@ function SvgComponent({classNames, fill, width}) {
         return '#000000'
       case 'mid':
         return '#594373'
+      default:
+        return '#ffffff'
     }
   }
   return (

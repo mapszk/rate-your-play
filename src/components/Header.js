@@ -13,9 +13,14 @@ const Header = () => {
     const { user } = useAuthContext()
     const history = useHistory()
     const [menu, setMenu] = useState(false)
-    const handleMenu = () => {
+    const handleMenuOn = () => {
         if(window.innerWidth >= 1024) return
         setMenu(true)
+        document.body.style.overflow = 'hidden'
+    }
+    const handleMenuOff = () => {
+        setMenu(false)
+        document.body.style.overflow = 'unset'
     }
     const logout = async () => {
         await auth.signOut()
@@ -30,7 +35,7 @@ const Header = () => {
                 <header className={`h-12 py-2 w-full px-1 ${headerStyles.header}`}>
                     <Logo fill="white" width="2" classNames={headerStyles.logo}/>
                     <SearchBar classNames={headerStyles.search}/>
-                    <div className={headerStyles.avatar} onClick={handleMenu}>
+                    <div className={headerStyles.avatar} onClick={handleMenuOn}>
                         <Avatar/>
                     </div>
                     {/* menu for desktop */}
@@ -44,11 +49,11 @@ const Header = () => {
             {
                 menu && 
                 <div className={`text-primary text-lg bg-dark font-semibold ${headerStyles.menu}`}>
-                    <Link onClick={()=>setMenu(false)} to={`/profile/${user.uid}`} className="mb-5">Profile</Link>
-                    <Link onClick={()=>setMenu(false)} to="/settings" className="mb-5">Settings</Link>
+                    <Link onClick={handleMenuOff} to={`/profile/${user.uid}`} className="mb-5">Profile</Link>
+                    <Link onClick={handleMenuOff} to="/settings" className="mb-5">Settings</Link>
                     <h2 onClick={logout}>Log out</h2>
                     <IconContext.Provider value={{size: '2rem'}}>
-                        <IoIosCloseCircle onClick={()=>setMenu(false)} className="absolute top-3 right-3"/>
+                        <IoIosCloseCircle onClick={handleMenuOff} className="absolute top-3 right-3"/>
                     </IconContext.Provider>
 
                 </div>

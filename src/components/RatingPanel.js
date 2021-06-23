@@ -7,11 +7,13 @@ import { db } from '../firebase/firebaseConfig';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useParams } from 'react-router';
 
-const RatingPanel = ({site, gameplay, cover, name, classNames}) => {
+const RatingPanel = ({reviews, site, gameplay, cover, name, classNames}) => {
     const { gameslug } = useParams()
     const { user } = useAuthContext()
     const [modal, setModal] = useState(false)
     const [isWishlist, setIsWishlist] = useState()
+    const ratings = reviews.map(review=> review.rating)
+    const average = ratings.reduce((accumulator, current)=> accumulator + current, 0)
 
     const handleWishlist = async () => {
         if(isWishlist){
@@ -65,7 +67,7 @@ const RatingPanel = ({site, gameplay, cover, name, classNames}) => {
                 activeColor="#ED6D5C" 
                 classNames="mx-auto -mt-2 mb-1" 
                 edit={false}
-                value={4}
+                value={Math.round(average/ratings.length) || 0}
             />
             <Button mb="2" full primary handleClick={()=>setModal(true)}>Rate!</Button>
             <Button mb="2" full secondary handleClick={handleWishlist}>

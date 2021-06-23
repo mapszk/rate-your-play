@@ -85,7 +85,7 @@ const Index = () => {
                     handleClick={loginGoogle}
                 >
                     <div className="flex justify-center items-center">
-                        Log me with Google <FcGoogle/> 
+                        Log me with Google <FcGoogle className="ml-2"/> 
                     </div>
                 </Button>
             </div>

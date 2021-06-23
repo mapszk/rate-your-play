@@ -43,7 +43,8 @@ const Home = () => {
           <div className={styles.grid}>
             {
               games.map(({cover, slug, name})=>{
-                return <GameCover 
+                return <GameCover
+                  key={slug} 
                   cover={cover}
                   slug={slug}
                   name={name}
