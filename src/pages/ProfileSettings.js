@@ -14,6 +14,7 @@ const ProfileSettings = () => {
     const { photoURL, displayName, email } = user
     const history = useHistory()
     const [newUsername, setNewUsername] = useState('')
+    const [newDesc, setNewDesc] = useState('')
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [error, setError] = useState(false)
     const [msg, setMsg] = useState('')
@@ -39,15 +40,25 @@ const ProfileSettings = () => {
             }
             user.updateProfile({displayName: newUsername})
             await db.collection('users')
-                .doc(user.uid.toString())
+                .doc(user.uid)
                 .update({displayName: newUsername})
-            return history.push(`/profile/${user.uid}`)
         }
+        if(newDesc !== ''){
+            await db.collection('users')
+                .doc(user.uid)
+                .get()
+                .then(doc=>{
+                    const { desc } = doc.data()
+                    if(!desc) doc.ref.set({desc: newDesc}, {merge: true})
+                    if(desc) doc.ref.update({desc: newDesc})
+                })
+        }
+        return history.push(`/profile/${user.uid}`)
     }
     
     return (
         <>
-            <div className="pt-20">
+            <div className="pt-10">
                 <div className="w-24 mx-auto">
                     <Avatar url={photoURL}/>
                 </div>
@@ -59,6 +70,8 @@ const ProfileSettings = () => {
                         value={newUsername} 
                         onChange={e=>setNewUsername(e.target.value)}   
                     />
+                    <Label>Change profile description</Label>
+                    <textarea value={newDesc} onChange={e=>setNewDesc(e.target.value)} maxLength={50} className="w-full rounded px-2 py-1 resize-none h-16 mb-2 focus:outline-none focus:ring-primary focus:ring-2"></textarea>
                     {error && <span className="bg-mid text-white text-center rounded px-3 py-3 w-full">{msg}</span>}
                     <div className="flex flex-col justify-between w-full mt-2">
                         <Button secondary full disabled={isSubmitting?true:false}>Cancel</Button>

@@ -118,14 +118,6 @@ const Index = () => {
         }
     }
 
-    const formStyles = [
-        'w-full',
-        'flex',
-        'flex-col',
-        'justify-center',
-        'items-center',
-        'max-w-md',
-    ].join(' ')
     const errorStyles = [
         'bg-mid',
         'text-white',
@@ -139,7 +131,7 @@ const Index = () => {
     return (
         <>
             <h1 className="text-white text-center font-semibold text-2xl mb-3">Create an account</h1>
-            <form className={formStyles} onSubmit={validation}>
+            <form className="w-full flex flex-col justify-center items-center max-w-d" onSubmit={validation}>
                 <Label htmlFor="username">Username</Label>
                 <Input 
                     value={username} 
@@ -170,7 +162,7 @@ const Index = () => {
                     id="repass" 
                     name="repass"
                 />
-                {error && <span className={errorStyles}>{msg}</span>}
+                {error && <span className="bg-mid text-white text-center rounded px-3 py-3 w-full">{msg}</span>}
                 <Button 
                     mt="2"
                     mb="3" 

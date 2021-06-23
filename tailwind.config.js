@@ -14,7 +14,8 @@ module.exports = {
         },
         maxWidth: {
             'inherit': 'inherit',
-            '960': '960px'
+            '960': '960px',
+            '100': '100px'
         },
         minHeight: {
             'custom': 'calc(100vh - 150px)'

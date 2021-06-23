@@ -9,15 +9,13 @@ import ReviewsSection from '../components/ReviewsSection'
 const Game = () => {
     const { loading, gameInfo } = useGamePage()
     const { cover, name, genres, price, releaseYear, dev, gameplay, site, reviews } = gameInfo
-
     if(loading) return <Loader />
     return (
-        <section className={`flex flex-col`}>
-                <img className={`order-first rounded-lg object-cover h-52 w-full mb-2`} src={cover}/>
-                <div className={`flex flex-col ${styles.grid}`}>
+        <section className={styles.section}>
+                <img className="rounded object-cover h-52 w-full mb-2" src={cover}/>
+                <div className={styles.grid}>
                     <GameInfo 
-                        classNames={`${styles.info}`}
-                        cover={cover} 
+                        classNames={styles.info}
                         name={name} 
                         dev={dev} 
                         genres={genres} 
@@ -25,11 +23,13 @@ const Game = () => {
                         releaseYear={releaseYear}
                     />
                     <RatingPanel 
+                        cover={cover}
+                        name={name}
                         gameplay={gameplay}
                         site={site}
-                        classNames={`mb-2 ${styles.rating}`}
+                        classNames={styles.rating}
                     /> 
-                    <ReviewsSection classNames={`w-full ${styles.reviews}`} reviews={reviews}/>
+                    <ReviewsSection classNames={styles.reviews} reviews={reviews.filter(rev=>rev.review.length>0)}/>
                 </div>
         </section>
     );

@@ -2,7 +2,7 @@ import * as React from "react"
 
 function SvgComponent(props) {
   return (
-    <div className="min-h-screen w-full flex justify-center items-center">
+    <div className="py-5 w-full flex justify-center items-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         style={{

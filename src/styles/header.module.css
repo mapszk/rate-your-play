@@ -4,7 +4,6 @@
     justify-content: space-between;
     position: relative;
     background-color: #180C14;
-    z-index: 9;
 }
 .logo{
     flex: 0 1 1;
@@ -33,7 +32,6 @@
     bottom: 0;
     right: 0;
     left: 20%;
-    z-index: 99;
 }
 
 .menuDesktop{
@@ -48,7 +46,6 @@
     padding-left: 2rem;
     padding-right: 2rem;
     border-radius: 2rem;
-    z-index: 1;
     right: 2.5rem;
     transform: scaleX(0);
     transform-origin: right;

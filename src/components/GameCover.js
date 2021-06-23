@@ -1,9 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-
 import styles from '../styles/gameCover.module.css'
 
-const GameCover = ({forReview, loading, cover, slug, name}) => {
+const GameCover = ({forReview, cover, slug, name}) => {
     const history = useHistory()
     const handleClick = () => history.push(`/game/${slug}`)
     return (
