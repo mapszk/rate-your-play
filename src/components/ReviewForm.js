@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import Label from './Label'
 import ReactStars from 'react-rating-stars-component'
 import Button from './Button'
-import { useHistory, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import { db } from '../firebase/firebaseConfig';
 import { useAuthContext } from '../hooks/useAuthContext';
 
 const ReviewForm = ({onClose}) => {
     const { gameslug } = useParams()
     const { user } = useAuthContext()
-    const history = useHistory()
     const [review, setReview] = useState('')
     const [rating, setRating] = useState(null)
     const [error, setError] = useState(false)
@@ -30,7 +29,8 @@ const ReviewForm = ({onClose}) => {
             date,
             rating,
             review: review.trim(),
-            userUID: user.uid
+            userUID: user.uid,
+            slug: gameslug
         }
         const newReviewToProfile = {
             date,
@@ -38,7 +38,7 @@ const ReviewForm = ({onClose}) => {
             rating,
             review: review.trim()
         }
-
+        
         const addReviewToGame = async () => {
             setIsSubmitting(true)
 
@@ -57,7 +57,6 @@ const ReviewForm = ({onClose}) => {
                         }
                         doc.ref.update({reviews: [...reviews, newReviewToGame]})
                     })
-                    addReviewToProfile()
                 })
                 .catch(err=>{
                     setError(true)
@@ -77,6 +76,7 @@ const ReviewForm = ({onClose}) => {
                     if(reviews) doc.ref.update({reviews: [...reviews, newReviewToProfile]})
                     setIsSubmitting(false)
                     onClose()
+                    setTimeout(()=>window.location.reload(), 2000)
                 })
                 .catch(err=>{
                     console.log(err)
@@ -88,6 +88,7 @@ const ReviewForm = ({onClose}) => {
                 })
         }
         addReviewToGame()
+        addReviewToProfile()
     }
 
     return (

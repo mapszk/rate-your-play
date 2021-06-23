@@ -8,6 +8,7 @@ const useSearchResultPage = () => {
     const [gamesInfo, setGamesInfo] = useState([])
 
     useEffect(()=>{
+        setGamesInfo([])
         const getGamesData = async () => {
             await db.collection('games')
                 .get()

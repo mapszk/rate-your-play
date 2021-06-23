@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import useProfilePage from '../hooks/useProfilePage'
 import ReviewsSection from '../components/ReviewsSection'
 import Error from '../components/Error'
@@ -8,9 +8,9 @@ import Wishlist from '../components/Wishlist'
 
 const Profile = () => {
     const { error, profileData, loading } = useProfilePage()
-    const { desc, photoURL, displayName, reviews, wishlist} = profileData
+    const { desc, photoURL, displayName, reviews, wishlist } = profileData
     const [showReviews, setShowReviews] = useState(true)
-    useEffect(()=>console.log(wishlist),[wishlist])
+
     if(loading) return <Loader />
     if(error) return <Error />
     return (

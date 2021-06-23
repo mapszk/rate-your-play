@@ -1,9 +1,8 @@
 import React from 'react';
 import { useAuthContext } from '../hooks/useAuthContext';
-
 import sampleUser from '../images/sampleUser.png'
 
-const Index = ({url, classNames}) => {
+const Avatar = ({url, classNames}) => {
     const { user } = useAuthContext()
     if(url !== undefined){
         return(
@@ -24,4 +23,4 @@ const Index = ({url, classNames}) => {
     }
 }
 
-export default Index;
+export default Avatar;

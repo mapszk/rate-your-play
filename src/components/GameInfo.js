@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router';
 
 const formatPrice = num => num.toLocaleString('en-US', {style: 'currency', currency: 'USD'})

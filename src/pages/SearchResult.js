@@ -10,8 +10,8 @@ const SearchResult = () => {
     const { gamesInfo, loading, keyword } = useSearchResultPage()
     
     if(loading) return <Loader />
-    if(gamesInfo===0) return(
-        <div className="w-full h-screen flex flex-col justify-center items-center text-mid font-semibold px-10 text-center">
+    if(gamesInfo===0 || gamesInfo.length === 0) return(
+        <div className="w-full py-24 flex flex-col justify-center items-center text-mid font-semibold px-10 text-center">
             <IconContext.Provider value={{size: '4rem'}}>
                 <FaRegSadTear />
             </IconContext.Provider>

@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-
+import React from 'react';
 import { useAuthContext } from '../hooks/useAuthContext';
 import Footer from './Footer';
 import Header from './Header';

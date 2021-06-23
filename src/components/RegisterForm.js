@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import { auth, db, loginWithGoogle, writeUserOnDatabase } from '../firebase/firebaseConfig';
 import Button from './Button'
 import Input from './Input'
@@ -117,21 +116,11 @@ const Index = () => {
             handleSubmit()
         }
     }
-
-    const errorStyles = [
-        'bg-mid',
-        'text-white',
-        'text-center',
-        'rounded',
-        'px-3',
-        'py-3',
-        'w-full'
-    ].join(' ')
     
     return (
         <>
             <h1 className="text-white text-center font-semibold text-2xl mb-3">Create an account</h1>
-            <form className="w-full flex flex-col justify-center items-center max-w-d" onSubmit={validation}>
+            <form className="w-full flex flex-col justify-center items-center max-w-md" onSubmit={validation}>
                 <Label htmlFor="username">Username</Label>
                 <Input 
                     value={username} 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router';
+import { Redirect, useHistory } from 'react-router';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Autoplay, Pagination, Navigation } from 'swiper/core'
 import "swiper/swiper.min.css";
@@ -13,11 +13,14 @@ import Button from '../components/Button'
 import Container from '../components/Container'
 import Logo from '../components/Logo'
 import mario from '../images/mario.png'
+import { useAuthContext } from '../hooks/useAuthContext';
 
 SwiperCore.use([Autoplay, Pagination, Navigation])
 
 const Welcome = () => {
+    const { user } = useAuthContext()
     const history = useHistory()
+    if(user) return <Redirect to="/"/>
     return (
         <>
             <Container>
