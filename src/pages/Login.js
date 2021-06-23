@@ -5,6 +5,7 @@ import Container from '../components/Container'
 import LoginForm from '../components/LoginForm'
 import portal from '../images/portal.png'
 import { useAuthContext } from '../hooks/useAuthContext';
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
     const { user } = useAuthContext()
@@ -12,6 +13,9 @@ const Login = () => {
     if(user) return <Redirect to="/welcome" />
     else return (
         <>
+            <Helmet>
+                <title>Login - Rate Your Play</title>
+            </Helmet>
             <Container>
                 <section className="min-h-screen w-full flex flex-col justify-center items-center py-10">
                     <Logo fill="white" width="3" classNames="mb-4" />

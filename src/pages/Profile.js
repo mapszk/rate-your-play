@@ -5,6 +5,7 @@ import Error from '../components/Error'
 import Loader from '../components/Loader'
 import Avatar from '../components/Avatar'
 import Wishlist from '../components/Wishlist'
+import { Helmet } from 'react-helmet';
 
 const Profile = () => {
     const { error, profileData, loading } = useProfilePage()
@@ -15,6 +16,9 @@ const Profile = () => {
     if(error) return <Error />
     return (
         <>
+            <Helmet>
+                <title>{displayName}'s profile - Rate Your Play</title>
+            </Helmet>
             <div>
                 <div className="w-24 mx-auto pt-4">
                     <Avatar url={photoURL}/>

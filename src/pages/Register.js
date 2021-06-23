@@ -5,6 +5,7 @@ import Container from '../components/Container'
 import RegisterForm from '../components/RegisterForm'
 import halo from '../images/halo.png'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { Helmet } from 'react-helmet';
 
 const Register = () => {
     const { user } = useAuthContext()
@@ -12,6 +13,9 @@ const Register = () => {
     if(user) return <Redirect to="/welcome" />
     else return(
         <>
+            <Helmet>
+                <title>Register - Rate Your Play</title>
+            </Helmet>
             <Container>
                 <section className="min-h-screen w-full flex flex-col justify-center items-center py-10">
                     <Logo fill="white" width="3" classNames="mb-4" />

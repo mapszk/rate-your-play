@@ -6,6 +6,7 @@ import Input from '../components/Input'
 import Label from '../components/Label'
 import { db } from '../firebase/firebaseConfig'
 import { useHistory } from 'react-router'
+import { Helmet } from 'react-helmet'
 
 const userRegex = /^(?=.{5,40}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9_]+(?<![_.])$/
 
@@ -58,6 +59,9 @@ const ProfileSettings = () => {
     
     return (
         <>
+            <Helmet>
+                <title>Profile settings - Rate Your Play</title>
+            </Helmet>
             <div className="pt-10">
                 <div className="w-24 mx-auto">
                     <Avatar url={photoURL}/>

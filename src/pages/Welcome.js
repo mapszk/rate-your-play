@@ -14,6 +14,7 @@ import Container from '../components/Container'
 import Logo from '../components/Logo'
 import mario from '../images/mario.png'
 import { useAuthContext } from '../hooks/useAuthContext';
+import { Helmet } from 'react-helmet'
 
 SwiperCore.use([Autoplay, Pagination, Navigation])
 
@@ -23,6 +24,9 @@ const Welcome = () => {
     if(user) return <Redirect to="/"/>
     return (
         <>
+            <Helmet>
+                <title>Welcome to Rate Your Play!</title>
+            </Helmet>
             <Container>
                 <section className="h-screen py-10 flex flex-col justify-center relative overflow-hidden"> 
                     <div className="grid-row-start-1 grid-row-end-1 flex flex-col justify-center items-center text-center mb-12">
