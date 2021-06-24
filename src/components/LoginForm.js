@@ -3,7 +3,7 @@ import Button from './Button'
 import Input from './Input'
 import Label from './Label'
 import { FcGoogle } from 'react-icons/fc'
-import { db, loginWithGoogle, writeUserOnDatabase } from '../firebase/firebaseConfig';
+import { auth, db, loginWithGoogle, writeUserOnDatabase } from '../firebase/firebaseConfig';
 
 const Index = () => {
     const [email, setEmail] = useState('')
@@ -17,6 +17,19 @@ const Index = () => {
         setMsg('')
         setIsSubmitting(false)
     }, 6000)
+    const login = (e) => {
+        e.preventDefault()
+        auth.signInWithEmailAndPassword(email, password)
+            .then(userCredential=>{
+                setIsSubmitting(false)
+            })
+            .catch(err=>{
+                setIsSubmitting(false)
+                setError(true)
+                setMsg(err.message)
+                clearError()
+            })
+    }
     const loginGoogle = () => {
         loginWithGoogle()
             .then(async ({user})=> {
@@ -51,7 +64,7 @@ const Index = () => {
     return (
         <>
             <h1 className="text-white text-center font-semibold text-2xl mb-3">Log in</h1>
-            <form className="w-full flex flex-col justify-center items-center max-w-md">
+            <form onSubmit={login} className="w-full flex flex-col justify-center items-center max-w-md">
                 <Label htmlFor="email">Email</Label>
                 <Input value={email} onChange={e=> setEmail(e.target.value)} id="email" name="email" />
 
