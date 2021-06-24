@@ -51,7 +51,7 @@ const Header = () => {
                 <div className={`text-primary text-lg bg-dark font-semibold ${headerStyles.menu}`}>
                     <Link onClick={handleMenuOff} to={`/profile/${user.uid}`} className="mb-5">Profile</Link>
                     <Link onClick={handleMenuOff} to="/settings" className="mb-5">Settings</Link>
-                    <h2 onClick={logout}>Log out</h2>
+                    <h2 onClick={logout} className="cursor-pointer">Log out</h2>
                     <IconContext.Provider value={{size: '2rem'}}>
                         <IoIosCloseCircle onClick={handleMenuOff} className="absolute top-3 right-3"/>
                     </IconContext.Provider>

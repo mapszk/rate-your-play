@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, Route } from 'react-router';
 import { useAuthContext } from '../hooks/useAuthContext';
 
-const Index = ({children, ...rest}) => {
+const PrivateRoute = ({children, ...rest}) => {
     const { user } = useAuthContext()
     if(user){
         return <Route {...rest}>{children}</Route>
@@ -11,4 +11,4 @@ const Index = ({children, ...rest}) => {
     }
 }
 
-export default Index;
+export default PrivateRoute;
