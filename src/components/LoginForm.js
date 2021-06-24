@@ -48,40 +48,23 @@ const Index = () => {
                 setIsSubmitting(false)
             })
     }
-    const formStyles = [
-        'w-full',
-        'flex',
-        'flex-col',
-        'justify-center',
-        'items-center',
-        'max-w-md',
-    ].join(' ')
-    const errorStyles = [
-        'bg-secondary',
-        'text-white',
-        'text-center',
-        'rounded',
-        'px-3',
-        'py-3',
-        'w-full'
-    ].join(' ')
     return (
         <>
-            <form className={formStyles}>
+            <h1 className="text-white text-center font-semibold text-2xl mb-3">Log in</h1>
+            <form className="w-full flex flex-col justify-center items-center max-w-md">
                 <Label htmlFor="email">Email</Label>
                 <Input value={email} onChange={e=> setEmail(e.target.value)} id="email" name="email" />
 
                 <Label htmlFor="password">Password</Label>
                 <Input value={password} onChange={e=> setPassword(e.target.value)} type="password" id="password" name="password"/>
 
-                {error && <span className={errorStyles}>{msg}</span>}
+                {error && <span className="bg-secondary text-white text-center rounded p-3 w-full">{msg}</span>}
                 <Button mt="2" mb="3" full primary disabled={isSubmitting ? true : false}>{isSubmitting ? 'Loading...' : 'Log me'}</Button>
             </form>
             <div className="w-full max-w-md">
                 <Button 
                     secondary
-                    full 
-                    mb="10" 
+                    full
                     handleClick={loginGoogle}
                 >
                     <div className="flex justify-center items-center">

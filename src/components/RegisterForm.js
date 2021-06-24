@@ -167,7 +167,6 @@ const Index = () => {
                 <Button 
                     secondary
                     full 
-                    mb="10" 
                     handleClick={loginGoogle}
                 >
                     <div className="flex justify-center items-center">
