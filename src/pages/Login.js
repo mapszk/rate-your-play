@@ -17,7 +17,7 @@ const Login = () => {
                 <title>Login - Rate Your Play</title>
             </Helmet>
             <Container>
-                <section className="min-h-screen w-full flex flex-col justify-center items-center">
+                <section className="min-h-screen w-full flex flex-col justify-center items-center py-10">
                     <Logo fill="white" width="3" classNames="mb-4" />
                     <LoginForm />
                     <Link to="/register" className="text-primary underline mt-6">I don't have an account</Link>
